@@ -26,6 +26,7 @@ class Artist extends Component {
   }
 
   componentDidMount = async () => {
+    window.scrollTo(0, 0);
     const { location: { pathname } } = this.props;
     const id = pathname.split('/')[2];
     await db.collection('artists').doc(id).get()
@@ -42,7 +43,7 @@ class Artist extends Component {
     const {
       state: {
         name, urls: {
-          applemusic, spotify, deezer, youtube,
+          applemusic, spotify, deezer, youtube, twitter, instagram, facebook,
         }, bio, applemusichover,
       }, props: { location: { pathname } },
     } = this;
@@ -50,6 +51,7 @@ class Artist extends Component {
       AppleMusic, Deezer, Spotify, YouTube, Instagram, Facebook, Twitter,
     } = icons;
     const id = pathname.split('/')[2];
+    const social = [twitter, instagram, facebook];
 
     return (
       <main>
@@ -86,7 +88,6 @@ class Artist extends Component {
                 width: '7em',
                 position: 'absolute',
                 opacity: applemusichover ? 1 : 0,
-                transition: 'opacity 0.2s',
                 pointerEvents: 'none',
               }}
             />
@@ -100,9 +101,11 @@ class Artist extends Component {
           <Image src={`artists/${id}/cover`} alt="cover" style={{ width: '100%' }} parallax />
         </section>
         <section className="section static" style={{ padding: '5em 0', height: 'fit-content' }}>
-          <Twitter width={5} />
-          <Instagram width={5} />
-          <Facebook width={5} />
+          {
+            [Twitter, Instagram, Facebook].map((Item, i) => (
+              social[i] ? <Item href={social[i]} width={5} key={Item} /> : null
+            ))
+          }
         </section>
       </main>
     );

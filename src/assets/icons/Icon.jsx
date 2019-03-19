@@ -35,11 +35,12 @@ class Icon extends Component {
         rel="noopener noreferrer"
       >
         <svg
-          style={{ cursor: 'pointer', fill: colour, transition: 'fill 0.2s' }}
+          style={{ cursor: 'pointer', fill: colour }}
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width={`${width}em`}
+          fill={fill}
         >
           <title>{title}</title>
           <path d={path} />

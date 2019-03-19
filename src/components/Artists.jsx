@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { number } from 'prop-types';
+import {
+  objectOf, oneOfType, string, number,
+} from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Image from './Image';
 import { db } from '../services';
 
 class Artists extends Component {
-  static propTypes = { length: number };
+  static propTypes = { length: number, style: objectOf(oneOfType([string, number])) };
 
-  static defaultProps = { length: null }
+  static defaultProps = { length: null, style: {} }
 
   state = { artists: [] }
 
@@ -23,9 +25,9 @@ class Artists extends Component {
   })
 
   render = () => {
-    const { artists } = this.state;
+    const { state: { artists }, props: { style } } = this;
     return (
-      <section className="section static" style={{ padding: '5em 0', height: 'fit-content' }}>
+      <section className="section static" style={{ padding: '5em 0', height: 'fit-content', ...style }}>
         {artists.map(({ name }) => (
           <div className="cover" key={name}>
             <Link to={`artists/${name.toLowerCase().replace(' ', '')}`}>

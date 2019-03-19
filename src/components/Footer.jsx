@@ -1,6 +1,7 @@
 import React from 'react';
+import { shape, string } from 'prop-types';
 
-const Footer = () => (
+const Footer = ({ theme }) => (
   <footer style={{
     height: '5em',
     display: 'flex',
@@ -8,6 +9,7 @@ const Footer = () => (
     justifyContent: 'space-between',
     alignItems: 'center',
     fontWeight: 'bold',
+    ...theme,
   }}
   >
     <span>© Art House Records 2018</span>
@@ -24,5 +26,7 @@ const Footer = () => (
     </span>
   </footer>
 );
+
+Footer.propTypes = { theme: shape({ backgroundColor: string, color: string }).isRequired };
 
 export default Footer;

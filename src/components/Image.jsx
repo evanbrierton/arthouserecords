@@ -16,12 +16,12 @@ class Image extends Component {
     db.doc(`assets/${src}`).get().then(doc => (
       this.setState({
         source: Object.values(doc.data()).reduce((acc, next, i) => (
-          `${acc}${next} ${Object.keys(doc.data())[i]},`)),
+          `${acc}${next} ${Object.keys(doc.data())[i]}, `)),
       })
     ));
 
     const updateSrc = () => {
-      if (parallax && document.querySelector(`#${alt}`).currentSrc) {
+      if (parallax && document.querySelector(`#${alt}`) && document.querySelector(`#${alt}`).currentSrc) {
         this.setState({ currentSrc: document.querySelector(`#${alt}`).currentSrc });
       } else setTimeout(updateSrc, 100);
     };

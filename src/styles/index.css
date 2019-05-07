@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
 * {
-  transition: all 0.2s cubic-bezier(.25,.8,.25,1);
   outline: none;
 }
 
@@ -135,6 +134,9 @@ main {
 }
 
 .cover-image {
+  transition-property: transform, box-shadow;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(.25,.8,.25,1);
   min-width: 300px;
   min-height: 300px;
   width: 30vw;
@@ -180,6 +182,7 @@ ul {
 button.theme {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   border-radius: 50%;
+  transition: box-shadow 0.2s cubic-bezier(.25,.8,.25,1);
   width: 3em;
   height: 3em;
   margin: 0.5em;
@@ -189,6 +192,7 @@ button.theme {
 
 button.theme:hover, button.theme:focus {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transition: box-shadow 0.2s cubic-bezier(.25,.8,.25,1);
 }
 
 button.theme.dark {
@@ -199,4 +203,12 @@ button.theme.dark {
 button.theme.light {
   background-color: white;
   border: 1px solid #2c2c2c;
+}
+
+.Icon svg {
+  transition: fill 0.08s ease-in;
+}
+
+img {
+  transition: opacity 0.08s ease-in;
 }

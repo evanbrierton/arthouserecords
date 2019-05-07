@@ -33,6 +33,7 @@ class Icon extends Component {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        className="Icon"
       >
         <svg
           style={{ cursor: 'pointer', fill: colour }}
